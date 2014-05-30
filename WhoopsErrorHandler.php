@@ -15,7 +15,7 @@ class WhoopsErrorHandler extends CErrorHandler {
 	 * Page title in case of non-AJAX requests.
 	 * @var string
 	 */
-	public $pageTitle = 'Whoops! we got a problem here';
+	public $pageTitle = 'Whoops! We have a problem here.';
 
 	protected $defaultDisabledLogRoutes = array('YiiDebugToolbarRoute');
 
