@@ -76,7 +76,11 @@ class WhoopsErrorHandler extends CErrorHandler {
 			return;
 		}
 		$this->disableLogRoutes();
-		$this->whoops->handleError($event->code, $event->message, $event->file, $event->line);
+		try {
+			$this->whoops->handleError($event->code, $event->message, $event->file, $event->line);
+		} catch (Exception $ex) {
+			$this->handleException($ex);
+		}
 	}
 
 	/**
