@@ -25,7 +25,8 @@ class WhoopsErrorHandler extends CErrorHandler {
 	/**
 	 * Instantiate Whoops with the correct handlers.
 	 */
-	public function __construct() {
+	public function init() {
+		parent::init();
 		$this->whoops = new Whoops;
 
 		if (Yii::app()->request->isAjaxRequest) {
