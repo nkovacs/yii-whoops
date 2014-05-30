@@ -1,6 +1,6 @@
 {
-    "name": "igorsantos07/yii-whoops",
-    "description": "Whoops integration class into Yii Framework 1.1",
+    "name": "nkovacs/yii-whoops",
+    "description": "Whoops integration class for Yii Framework 1.1",
     "license": "MIT",
     "minimum-stability": "dev",
 
@@ -13,16 +13,12 @@
     ],
 
     "support": {
-        "email": "igorsantos07+dev@gmail.com",
-        "issues": "https://github.com/igorsantos07/yii-whoops/issues",
-        "source": "https://github.com/igorsantos07/yii-whoops"
+        "issues": "https://github.com/nkovacs/yii-whoops/issues",
+        "source": "https://github.com/nkovacs/yii-whoops"
     },
 
     "require": {
         "filp/whoops": "1.*",
         "yiisoft/yii": "1.1.*"
-    },
-    "require-dev": {
-        "igorsantos07/yii-whoops": "1"
     }
 }
