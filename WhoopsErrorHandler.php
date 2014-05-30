@@ -13,9 +13,10 @@ class WhoopsErrorHandler extends CErrorHandler {
 
 	/**
 	 * Page title in case of non-AJAX requests.
+	 * If not set, will use Whoops default: "Whoops! There was an error."
 	 * @var string
 	 */
-	public $pageTitle = 'Whoops! We have a problem here.';
+	public $pageTitle;
 
 	protected $defaultDisabledLogRoutes = array('YiiDebugToolbarRoute');
 
@@ -32,7 +33,9 @@ class WhoopsErrorHandler extends CErrorHandler {
 		}
 		else {
 			$page_handler = new PrettyPageHandler;
-			$page_handler->setPageTitle($this->pageTitle);
+			if (isset($this->pageTitle)) {
+				$page_handler->setPageTitle($this->pageTitle);
+			}
 			$this->whoops->pushHandler($page_handler);
 		}
 	}
