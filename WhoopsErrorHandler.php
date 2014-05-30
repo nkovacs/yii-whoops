@@ -18,6 +18,20 @@ class WhoopsErrorHandler extends CErrorHandler {
 	 */
 	public $pageTitle;
 
+	/**
+	 * Editor to open files in. Can be one of the following:
+	 *     sublime
+	 *     emacs
+	 *     textmate
+	 *     macvim
+	 *     xdebug
+	 * or a protocol url with the tokens {file} and {line},
+	 * which will be replaced by the filename and line number.
+	 * {@link https://github.com/filp/whoops/blob/master/docs/Open%20Files%20In%20An%20Editor.md}
+	 * @var string
+	 */
+	public $editor;
+
 	protected $defaultDisabledLogRoutes = array('YiiDebugToolbarRoute');
 
 	protected $disabledLogRoutes = array();
@@ -36,6 +50,23 @@ class WhoopsErrorHandler extends CErrorHandler {
 			$page_handler = new PrettyPageHandler;
 			if (isset($this->pageTitle)) {
 				$page_handler->setPageTitle($this->pageTitle);
+			}
+			if (isset($this->editor)) {
+				$editor = $this->editor;
+				switch ($editor) {
+					case 'sublime':
+					case 'emacs':
+					case 'textmate':
+					case 'macvim':
+					case 'xdebug':
+						$page_handler->setEditor($editor);
+						break;
+					default:
+						$page_handler->setEditor(function ($file, $line) use ($editor) {
+							return strtr($editor, array('{file}' => $file, '{line}' => $line));
+						});
+						break;
+				}
 			}
 			$this->whoops->pushHandler($page_handler);
 		}
