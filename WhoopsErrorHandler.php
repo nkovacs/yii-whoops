@@ -1,5 +1,4 @@
 <?php
-use Whoops\Run as Whoops;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Handler\PrettyPageHandler;
 
@@ -41,7 +40,8 @@ class WhoopsErrorHandler extends CErrorHandler {
 	 */
 	public function init() {
 		parent::init();
-		$this->whoops = new Whoops;
+		require 'YiiWhoopsRunner.php';
+		$this->whoops = new YiiWhoopsRunner();
 
 		if (Yii::app()->request->isAjaxRequest) {
 			$this->whoops->pushHandler(new JsonResponseHandler);
