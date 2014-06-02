@@ -3,13 +3,10 @@ Yii Error Handler with Whoops
 
 Integrates the Whoops library into Yii 1.1.
 
-Instead of depending on an action to display error stuff, this error handler calls directly
-Whoops methods to handle the problems for you. They automatically outputs the error page, so
-you don't need to have an action only for that.
-
-However, I do recomend you to set the default errorHandler in production servers, since you
-probably don't want to show users *useful debug information*, right? ;)
-
+This error handler replaces the built-in exception views with Whoops.
+Your error action (or Yii's built-in error views, if errorAction is not set)
+is used if your application is not in debug mode (i.e. `YII_DEBUG` is false), or the
+exception is a `CHttpException`.
 
 Usage
 -----
@@ -22,7 +19,7 @@ Usage
     ```
     - Or [downloading] and unpacking it in your `extensions` folder.
 
-2. If you're using Composer, I strongly recomend you to create a `vendor` alias if you haven't yet.
+2. If you're using Composer, I strongly recomend you create a `vendor` alias if you haven't yet.
    Add this to the beginning of your `config/main.php`:
 
     ```php
@@ -32,8 +29,11 @@ Usage
 3. Replace your `errorHandler` entry at `config/main.php` with the error handler class. Example:
 
     ```php
-    'errorHandler' => ['class' => 'vendor.igorsantos07.yii-whoops.WhoopsErrorHandler']
+    'errorHandler' => ['class' => 'vendor.nkovacs.yii-whoops.WhoopsErrorHandler']
     ```
+
+    If you're using Composer's autoloader, you can simply use `'WhoopsErrorHandler'`.
+    You must require 'vendor/autoload.php' in your entry scripts (index.php, yiic.php etc.) for this to work.
 
 4. If you're using some custom LogRoute that binds to the application's end, you can disable it using
    the component's `disabledLogRoutes` property. Just set it to an array containing all the classnames
@@ -43,7 +43,7 @@ Usage
 
    ```php
    'errorHandler' => [
-       'class'             => 'vendor.igorsantos07.yii-whoops.WhoopsErrorHandler',
+       'class'             => 'vendor.nkovacs.yii-whoops.WhoopsErrorHandler',
        'disabledLogRoutes' => 'MyCustomRouteClass'
    ]
    ```
