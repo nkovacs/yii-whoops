@@ -55,5 +55,5 @@ Sample screenshot
 </a>
 
 [Composer]:http://getcomposer.org/
-[downloading]:https://github.com/igorsantos07/yii-whoops/archive/master.zip
+[downloading]:https://github.com/nkovacs/yii-whoops/archive/master.zip
 [ydtb]:http://github.com/malyshev/yii-debug-toolbar
