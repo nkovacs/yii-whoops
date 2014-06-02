@@ -12,7 +12,7 @@ Usage
 -----
 
 1. Install it:
-    - Using [Composer] (it will automatically install Whoops main libraries as well):
+    - Using [Composer][composer] (it will automatically install Whoops main libraries as well):
     ```shell
     composer require igorsantos07/yii-whoops:1
     composer install
@@ -38,7 +38,7 @@ Usage
 4. If you're using some custom LogRoute that binds to the application's end, you can disable it using
    the component's `disabledLogRoutes` property. Just set it to an array containing all the classnames
    (not aliases!) of each route you want disabled whenever Whoops is launched. By default it disables
-   the famous (Yii Debug Toolbar)[ydtb]; if you want to keep it enabled, override the
+   the famous [Yii Debug Toolbar][ydtb]; if you want to keep it enabled, override the
    `defaultDisabledLogRoutes` property.
 
    ```php
@@ -54,6 +54,6 @@ Sample screenshot
     <img src="http://i.imgur.com/pqt8fK4.png" width="650" />
 </a>
 
-[Composer]:http://getcomposer.org/
+[composer]:http://getcomposer.org/
 [downloading]:https://github.com/nkovacs/yii-whoops/archive/master.zip
 [ydtb]:http://github.com/malyshev/yii-debug-toolbar
